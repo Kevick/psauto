@@ -227,7 +227,7 @@ Aguardo retorno!`.replace(/\s+/g, '%20');
             rel="noopener noreferrer"
             className="text-green-500 hover:text-green-400"
           >
-            (11) 99999-9999
+            (24) 99321-0516
           </a>
         </div>
       </footer>
