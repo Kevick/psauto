@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Gauge, Car, Send, CheckCircle, Wrench, BarChart } from 'lucide-react';
+import {Gauge, Send, CheckCircle, Wrench, BarChart } from 'lucide-react';
 
 const PsautoWebsite = () => {
   const [formData, setFormData] = useState({
