@@ -53,7 +53,7 @@ Aguardo retorno!`.replace(/\s+/g, '%20');
   ];
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
+    <div id = 'inicio' className="bg-gray-900 text-white min-h-screen">
       {/* Cabeçalho */}
       <header className="bg-black/70 fixed w-full z-50 top-0">
         <div className="container mx-auto flex justify-between items-center p-4">
@@ -63,6 +63,7 @@ Aguardo retorno!`.replace(/\s+/g, '%20');
             <h1 className="text-2xl font-bold">Psauto Performance</h1>
           </div>
           <nav className="space-x-4">
+            <a href="#inicio" className="hover:text-yellow-500">Inicio</a>
             <a href="#servicos" className="hover:text-yellow-500">Serviços</a>
             <a href="#contato" className="hover:text-yellow-500">Contato</a>
           </nav>
