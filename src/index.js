@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-
-import PsautoWebsite from './page/psauto-website';
+import App from './App'; // Importando o App.jsx, que já renderiza o PsautoWebsite
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  < PsautoWebsite/>
+    <App /> {/* Renderizando o componente App */}
   </React.StrictMode>
 );
 
