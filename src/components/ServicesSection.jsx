@@ -19,7 +19,7 @@ const ServicesSection = () => {
             },
             {
               icon: <CheckCircle size={50} className="text-red-500" />,
-              title: "Suporte Técnico",
+              title: "MECANICA",
               description: "Atendimento especializado e personalizado"
             }
           ].map((servico, index) => (

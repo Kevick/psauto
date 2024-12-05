@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { motion } from 'framer-motion';  // Importando o framer-motion
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -25,25 +26,27 @@ const PsautoWebsite = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = (selectedContact) => {
     const mensagem = `Olá, gostaria de um orçamento de remap!\n
     *Dados do Cliente:*
     - Nome: ${formData.nome}
     - Telefone: ${formData.telefone}
     - Email: ${formData.email}
-
+  
     *Dados do Veículo:*
     - Modelo: ${formData.modelo}
     - Ano: ${formData.ano}
-
+  
     *Observações:*
     ${formData.observacoes}
-
+  
+    Enviar para: ${selectedContact.name} - ${selectedContact.phone}
+  
     Aguardo retorno!`.replace(/\s+/g, '%20');
-
-    window.open(`https://wa.me/5524993210516?text=${mensagem}`, '_blank');
+  
+    // Usa o número do contato selecionado
+    const numeroWhatsApp = `55${selectedContact.phone.replace(/\D/g, '')}`; // Remove caracteres não numéricos e adiciona "55" para DDI
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
   };
 
   return (
