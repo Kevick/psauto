@@ -12,9 +12,10 @@ const PsautoWebsite = () => {
   const [formData, setFormData] = useState({
     nome: '',
     telefone: '',
-    email: '',
+    marca: '',
     modelo: '',
     ano: '',
+    servico: '',
     observacoes: ''
   });
 
@@ -27,15 +28,16 @@ const PsautoWebsite = () => {
   };
 
   const handleSubmit = (selectedContact) => {
-    const mensagem = `Olá, gostaria de um orçamento de remap!\n
+    const mensagem = `Olá, gostaria de um orçamento de ${formData.servico}!\n
     *Dados do Cliente:*
     - Nome: ${formData.nome}
     - Telefone: ${formData.telefone}
-    - Email: ${formData.email}
   
     *Dados do Veículo:*
+    - Marca: ${formData.marca}
     - Modelo: ${formData.modelo}
     - Ano: ${formData.ano}
+  
   
     *Observações:*
     ${formData.observacoes}

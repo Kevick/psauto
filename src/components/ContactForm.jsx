@@ -51,10 +51,10 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
           </div>
           <div className="mt-4 grid md:grid-cols-2 gap-4">
             <input 
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              value={formData.email}
+              type="text"
+              name="marca"
+              placeholder="Marca do Veículo"
+              value={formData.marca}
               onChange={handleInputChange}
               required
               className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
@@ -68,6 +68,28 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               required
               className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
             />
+            <input 
+              type="number"
+              name="ano"
+              placeholder="Ano do Veículo"
+              value={formData.ano}
+              onChange={handleInputChange}
+              required
+              className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+            />
+            <select
+                name="servico"
+                value={formData.servico}
+                onChange={handleInputChange}
+                required
+                className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+              >
+                <option value="" disabled>Selecione o Serviço Desejado</option>
+                <option value="remap/chip">REMAP/CHIP</option>
+                <option value="calibracao">Calibração de motores</option>
+                <option value="dinamometro">Dinamômetro</option>
+                <option value="manutencao">Manutenção Mecanica</option>
+              </select>
           </div>
           <div className="mt-4">
             <textarea 
