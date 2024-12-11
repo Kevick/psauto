@@ -41,7 +41,7 @@ Informações do Veículo:
 - Ano: ${formData.ano}
 
 *Observações:*
-${formData.observacoes || "Sem observações adicionais."}
+${formData.observacoes || "Sem observações adicionais."}.
 
 Aguardo seu retorno.
 
