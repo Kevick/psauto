@@ -28,34 +28,35 @@ const PsautoWebsite = () => {
   };
 
   const handleSubmit = (selectedContact) => {
-    const mensagem = `Olá, gostaria de um orçamento de ${formData.servico}!\n
-    *Dados do Cliente:*\n
-    - Nome: ${formData.nome}\n
-    - Telefone: ${formData.telefone}\n
-  
-    *Dados do Veículo:*\n
-    - Marca: ${formData.marca}\n
-    - Modelo: ${formData.modelo}\n
-    - Ano: ${formData.ano}\n
-  
-  
-    *Observações:*\n
-    ${formData.observacoes}\n
+    const mensagem = `
+    Olá, gostaria de um orçamento de *${formData.servico}*!
+    
+    *Dados do Cliente:*
+    - Nome: ${formData.nome}
+    - Telefone: ${formData.telefone}
+    
+    *Dados do Veículo:*
+    - Marca: ${formData.marca}
+    - Modelo: ${formData.modelo}
+    - Ano: ${formData.ano}
+    
+    *Observações:*
+    ${formData.observacoes}
     
     Aguardo retorno!`.replace(/\s+/g, '%20');
-  
+
     // Usa o número do contato selecionado
     const numeroWhatsApp = `55${selectedContact.phone.replace(/\D/g, '')}`; // Remove caracteres não numéricos e adiciona "55" para DDI
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
   };
 
   return (
-    <div 
-      id="inicio" 
+    <div
+      id="inicio"
       className="bg-gray-900 text-white min-h-screen"
       style={{ scrollBehavior: 'smooth' }} // Scroll suave inline
     >
-        <Header />
+      <Header />
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -63,7 +64,7 @@ const PsautoWebsite = () => {
       >
         <Hero />
       </motion.div>
-      
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -71,7 +72,7 @@ const PsautoWebsite = () => {
       >
         <ImageGallery />
       </motion.div>
-      
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -79,7 +80,7 @@ const PsautoWebsite = () => {
       >
         <ServicesSection />
       </motion.div>
-      
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -87,7 +88,7 @@ const PsautoWebsite = () => {
       >
         <ContactForm formData={formData} handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
       </motion.div>
-      
+
       <Footer />
     </div>
   );
