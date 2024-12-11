@@ -29,21 +29,9 @@ const PsautoWebsite = () => {
 
   const handleSubmit = (selectedContact) => {
     const mensagem = `
-    Olá, gostaria de um orçamento de *${formData.servico}*!
-    
-    *Dados do Cliente:*
-    - Nome: ${formData.nome}
-    - Telefone: ${formData.telefone}
-    
-    *Dados do Veículo:*
-    - Marca: ${formData.marca}
-    - Modelo: ${formData.modelo}
-    - Ano: ${formData.ano}
-    
+    Olá, me chamo ${formData.nome} e eu gostaria de um orçamento de ${formData.servico}. Meu veículo é um ${formData.marca} ${formData.modelo} ${formData.ano}.
     *Observações:*
-    ${formData.observacoes}
-    
-    Aguardo retorno!`.replace(/\s+/g, '%20');
+    ${formData.observacoes}.`.replace(/\s+/g, '%20');
 
     // Usa o número do contato selecionado
     const numeroWhatsApp = `55${selectedContact.phone.replace(/\D/g, '')}`; // Remove caracteres não numéricos e adiciona "55" para DDI
