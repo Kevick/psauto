@@ -29,57 +29,57 @@ const PsautoWebsite = () => {
 
   const handleSubmit = (selectedContact) => {
     const mensagem = `
-    Olá, me chamo ${formData.nome} e eu gostaria de um orçamento de ${formData.servico}. Meu veículo é um ${formData.marca} ${formData.modelo} ${formData.ano}.
-    *Observações:*
-    ${formData.observacoes}.`.replace(/\s+/g, '%20');
+Olá, me chamo *${formData.nome}* e gostaria de um orçamento de *${formData.servico}*. 
+Meu veículo é um *${formData.marca} ${formData.modelo} ${formData.ano}*.
 
-    // Usa o número do contato selecionado
-    const numeroWhatsApp = `55${selectedContact.phone.replace(/\D/g, '')}`; // Remove caracteres não numéricos e adiciona "55" para DDI
+*Observações:*
+${formData.observacoes || 'Sem observações adicionais.'}.`.replace(/\s+/g, '%20');
+
+    const numeroWhatsApp = `55${selectedContact.phone.replace(/\D/g, '')}`;
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
+
+    return (
+      <div
+        id="inicio"
+        className="bg-gray-900 text-white min-h-screen"
+        style={{ scrollBehavior: 'smooth' }} // Scroll suave inline
+      >
+        <Header />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Hero />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <ImageGallery />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <ServicesSection />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <ContactForm formData={formData} handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
+        </motion.div>
+
+        <Footer />
+      </div>
+    );
   };
 
-  return (
-    <div
-      id="inicio"
-      className="bg-gray-900 text-white min-h-screen"
-      style={{ scrollBehavior: 'smooth' }} // Scroll suave inline
-    >
-      <Header />
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <Hero />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <ImageGallery />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <ServicesSection />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <ContactForm formData={formData} handleInputChange={handleInputChange} handleSubmit={handleSubmit} />
-      </motion.div>
-
-      <Footer />
-    </div>
-  );
-};
-
-export default PsautoWebsite;
+  export default PsautoWebsite;
