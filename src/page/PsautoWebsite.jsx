@@ -29,21 +29,19 @@ const PsautoWebsite = () => {
 
   const handleSubmit = (selectedContact) => {
     const mensagem = `Olá, gostaria de um orçamento de ${formData.servico}!\n
-    *Dados do Cliente:*
-    - Nome: ${formData.nome}
-    - Telefone: ${formData.telefone}
+    *Dados do Cliente:*\n
+    - Nome: ${formData.nome}\n
+    - Telefone: ${formData.telefone}\n
   
-    *Dados do Veículo:*
-    - Marca: ${formData.marca}
-    - Modelo: ${formData.modelo}
-    - Ano: ${formData.ano}
+    *Dados do Veículo:*\n
+    - Marca: ${formData.marca}\n
+    - Modelo: ${formData.modelo}\n
+    - Ano: ${formData.ano}\n
   
   
-    *Observações:*
-    ${formData.observacoes}
-  
-    Enviar para: ${selectedContact.name} - ${selectedContact.phone}
-  
+    *Observações:*\n
+    ${formData.observacoes}\n
+    
     Aguardo retorno!`.replace(/\s+/g, '%20');
   
     // Usa o número do contato selecionado
