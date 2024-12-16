@@ -71,14 +71,14 @@ const Blog = () => {
 
   return (
     <section id="blog" className="py-16 bg-gray-900">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h3 className="text-3xl text-center mb-12 text-red-500">Blog</h3>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {visiblePosts.length > 0 ? (
             visiblePosts.map((post) => (
               <div
                 key={post.id}
-                className="bg-gray-800 p-8 rounded-lg text-center hover:bg-gray-700 transition cursor-pointer"
+                className="bg-gray-800 p-6 rounded-lg text-center hover:bg-gray-700 transition cursor-pointer"
                 onClick={() => handlePostClick(post)} // Ação de clique no post
               >
                 <div className="flex justify-center mb-6">
@@ -93,7 +93,7 @@ const Blog = () => {
                     <FileText size={50} className="text-red-500" />
                   )}
                 </div>
-                <h4 className="text-2xl font-bold mb-4">{post.title}</h4>
+                <h4 className="text-2xl font-bold mb-4 text-white">{post.title}</h4>
                 <p className="text-gray-400 mb-4">{post.content}</p>
                 {/* Exibindo a mídia se houver */}
                 {post.mediaurl && (
@@ -114,7 +114,7 @@ const Blog = () => {
                             ) : (
                               <img
                                 src={url}
-                                alt={`Imagem do post ${index}`} // Corrigido: descrição mais genérica
+                                alt={`Imagem do post ${index}`}
                                 className="w-full mt-4 rounded-lg"
                                 onError={(e) => {
                                   e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
@@ -138,7 +138,7 @@ const Blog = () => {
                         ) : (
                           <img
                             src={post.mediaurl[0]}
-                            alt="Imagem do post" // Corrigido: descrição mais genérica
+                            alt="Imagem do post"
                             className="w-full mt-4 rounded-lg"
                             onError={(e) => {
                               e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
@@ -172,8 +172,8 @@ const Blog = () => {
 
       {/* Modal para exibir o post completo */}
       {selectedPost && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-gray-900 p-8 rounded-lg shadow-lg text-center max-w-4xl w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4">
+          <div className="bg-gray-900 p-6 rounded-lg shadow-lg text-center max-w-4xl w-full relative">
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-white text-2xl"
@@ -200,7 +200,7 @@ const Blog = () => {
                         ) : (
                           <img
                             src={url}
-                            alt={`Imagem do post ${index}`} // Corrigido: descrição mais genérica
+                            alt={`Imagem do post ${index}`}
                             className="w-full mt-4 rounded-lg"
                             onError={(e) => {
                               e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
@@ -224,7 +224,7 @@ const Blog = () => {
                     ) : (
                       <img
                         src={selectedPost.mediaurl[0]}
-                        alt="Imagem do post" // Corrigido: descrição mais genérica
+                        alt="Imagem do post"
                         className="w-full mt-4 rounded-lg"
                         onError={(e) => {
                           e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
