@@ -10,7 +10,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       // Chama o método do Supabase para fazer o login com email e senha
-      const { user, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
       });
