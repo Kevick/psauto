@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient"; // Importando o cliente Supabase
 import { FileText, Image, Video } from 'lucide-react'; // Ícones para os posts
+import Slider from "react-slick"; // Importando a biblioteca para o carousel
 
 const Blog = () => {
   const [posts, setPosts] = useState([]); // Armazena todos os posts
@@ -57,6 +58,17 @@ const Blog = () => {
     setVisiblePosts(posts.slice(0, newShowMore)); // Exibe os novos posts
   };
 
+  // Configuração do Carousel
+  const carouselSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   return (
     <section id="blog" className="py-16 bg-gray-900">
       <div className="container mx-auto">
@@ -71,8 +83,8 @@ const Blog = () => {
               >
                 <div className="flex justify-center mb-6">
                   {/* Ícone de acordo com o tipo de mídia */}
-                  {post.mediaUrl ? (
-                    post.mediaUrl.includes("youtube.com") ? (
+                  {post.mediaurl ? (
+                    post.mediaurl.includes("youtube.com") ? (
                       <Video size={50} className="text-red-500" />
                     ) : (
                       <Image size={50} className="text-red-500" />
@@ -84,23 +96,56 @@ const Blog = () => {
                 <h4 className="text-2xl font-bold mb-4">{post.title}</h4>
                 <p className="text-gray-400 mb-4">{post.content}</p>
                 {/* Exibindo a mídia se houver */}
-                {post.mediaUrl && (
+                {post.mediaurl && (
                   <div className="mt-4">
-                    {isVideo(post.mediaUrl) ? (
-                      <iframe
-                        width="100%"
-                        height="315"
-                        src={post.mediaUrl}
-                        frameBorder="0"
-                        allowFullScreen
-                        title="Post Video"
-                      ></iframe>
+                    {Array.isArray(post.mediaurl) && post.mediaurl.length > 1 ? (
+                      <Slider {...carouselSettings}>
+                        {post.mediaurl.map((url, index) => (
+                          <div key={index}>
+                            {isVideo(url) ? (
+                              <iframe
+                                width="100%"
+                                height="315"
+                                src={url}
+                                frameBorder="0"
+                                allowFullScreen
+                                title={`Post Video ${index}`}
+                              ></iframe>
+                            ) : (
+                              <img
+                                src={url}
+                                alt={`Imagem do post ${index}`} // Corrigido: descrição mais genérica
+                                className="w-full mt-4 rounded-lg"
+                                onError={(e) => {
+                                  e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
+                                }}
+                              />
+                            )}
+                          </div>
+                        ))}
+                      </Slider>
                     ) : (
-                      <img
-                        src={post.mediaUrl}
-                        alt={post.title}
-                        className="w-full mt-4 rounded-lg"
-                      />
+                      <div>
+                        {isVideo(post.mediaurl[0]) ? (
+                          <iframe
+                            width="100%"
+                            height="315"
+                            src={post.mediaurl[0]}
+                            frameBorder="0"
+                            allowFullScreen
+                            title="Post Video"
+                          ></iframe>
+                        ) : (
+                          <img
+                            src={post.mediaurl[0]}
+                            alt="Imagem do post" // Corrigido: descrição mais genérica
+                            className="w-full mt-4 rounded-lg"
+                            onError={(e) => {
+                              e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
+                            }}
+                          />
+                        )}
+                      </div>
                     )}
                   </div>
                 )}
@@ -137,23 +182,56 @@ const Blog = () => {
             </button>
             <h4 className="text-3xl font-bold mb-6 text-red-500">{selectedPost.title}</h4>
             <p className="text-gray-300 mb-4">{selectedPost.content}</p>
-            {selectedPost.mediaUrl && (
+            {selectedPost.mediaurl && (
               <div className="mt-4">
-                {isVideo(selectedPost.mediaUrl) ? (
-                  <iframe
-                    width="100%"
-                    height="315"
-                    src={selectedPost.mediaUrl}
-                    frameBorder="0"
-                    allowFullScreen
-                    title="Post Video"
-                  ></iframe>
+                {Array.isArray(selectedPost.mediaurl) && selectedPost.mediaurl.length > 1 ? (
+                  <Slider {...carouselSettings}>
+                    {selectedPost.mediaurl.map((url, index) => (
+                      <div key={index}>
+                        {isVideo(url) ? (
+                          <iframe
+                            width="100%"
+                            height="315"
+                            src={url}
+                            frameBorder="0"
+                            allowFullScreen
+                            title={`Post Video ${index}`}
+                          ></iframe>
+                        ) : (
+                          <img
+                            src={url}
+                            alt={`Imagem do post ${index}`} // Corrigido: descrição mais genérica
+                            className="w-full mt-4 rounded-lg"
+                            onError={(e) => {
+                              e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
+                            }}
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </Slider>
                 ) : (
-                  <img
-                    src={selectedPost.mediaUrl}
-                    alt={selectedPost.title}
-                    className="w-full mt-4 rounded-lg"
-                  />
+                  <div>
+                    {isVideo(selectedPost.mediaurl[0]) ? (
+                      <iframe
+                        width="100%"
+                        height="315"
+                        src={selectedPost.mediaurl[0]}
+                        frameBorder="0"
+                        allowFullScreen
+                        title="Post Video"
+                      ></iframe>
+                    ) : (
+                      <img
+                        src={selectedPost.mediaurl[0]}
+                        alt="Imagem do post" // Corrigido: descrição mais genérica
+                        className="w-full mt-4 rounded-lg"
+                        onError={(e) => {
+                          e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
+                        }}
+                      />
+                    )}
+                  </div>
                 )}
               </div>
             )}

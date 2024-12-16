@@ -4,37 +4,37 @@ import { supabase, supabaseUrl } from "../supabaseClient"; // Importando o clien
 export default function PostForm() {
   const [title, setTitle] = useState(""); // Título do post
   const [content, setContent] = useState(""); // Conteúdo do post
-  const [file, setFile] = useState(null); // Arquivo (imagem ou vídeo)
+  const [files, setFiles] = useState([]); // Arquivos (imagens ou vídeos)
 
   const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
+    const selectedFiles = Array.from(e.target.files);
+    setFiles(selectedFiles);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let mediaDownloadUrl = ""; // Variável para armazenar a URL da mídia
+    let mediaDownloadUrls = []; // Array para armazenar URLs das mídias
 
-    // Verifica se há um arquivo para upload
-    if (file) {
-      const fileName = `${Date.now()}_${encodeURIComponent(file.name)}`; // Gerando um nome único e codificando o nome do arquivo
-
+    // Verifica se há arquivos para upload
+    if (files.length > 0) {
       try {
-        // Enviando o arquivo para o Supabase Storage com o nome único
-        const { error } = await supabase.storage
-          .from("posts") // Nome do Bucket
-          .upload(`public/${fileName}`, file);
+        for (let file of files) {
+          const fileName = `${Date.now()}_${encodeURIComponent(file.name)}`; // Gerando um nome único e codificando o nome do arquivo
 
-        if (error) {
-          console.error("Erro ao fazer upload:", error.message);
-          alert("Erro ao fazer upload do arquivo.");
-          return;
+          const { error } = await supabase.storage
+            .from("posts") // Nome do Bucket
+            .upload(`public/${fileName}`, file);
+
+          if (error) {
+            console.error("Erro ao fazer upload:", error.message);
+            alert("Erro ao fazer upload do arquivo.");
+            return;
+          }
+
+          // Corrigindo a URL pública do arquivo armazenado
+          mediaDownloadUrls.push(`${supabaseUrl}/storage/v1/object/public/posts/public/${fileName}`);
         }
-
-        // Corrigindo a URL pública do arquivo armazenado
-        // O Supabase já adiciona o 'public/' na URL, então não precisamos adicionar novamente.
-        mediaDownloadUrl = `${supabaseUrl}/storage/v1/object/public/posts/public/${fileName}`;
       } catch (error) {
         console.error("Erro ao fazer upload:", error.message);
         alert("Erro ao fazer upload do arquivo.");
@@ -43,6 +43,9 @@ export default function PostForm() {
     }
 
     try {
+      // Formatar o array para a inserção no banco de dados
+      const formattedUrls = `{${mediaDownloadUrls.join(',')}}`; // Formato correto para o PostgreSQL
+
       // Salva o post na tabela 'posts' no Supabase (Banco de Dados)
       const { error } = await supabase
         .from("posts")
@@ -50,7 +53,7 @@ export default function PostForm() {
           {
             title,
             content,
-            mediaUrl: mediaDownloadUrl, // URL da mídia (imagem ou vídeo)
+            mediaurl: formattedUrls, // Inserir o array formatado corretamente
           },
         ]);
 
@@ -59,7 +62,7 @@ export default function PostForm() {
       // Limpa os campos após o envio
       setTitle("");
       setContent("");
-      setFile(null);
+      setFiles([]);
       alert("Post criado com sucesso!");
     } catch (error) {
       console.error("Erro ao criar o post:", error.message);
@@ -87,6 +90,7 @@ export default function PostForm() {
       <input
         type="file"
         className="w-full p-2 border border-gray-300 rounded mb-4"
+        multiple
         onChange={handleFileChange}
       />
       <button
