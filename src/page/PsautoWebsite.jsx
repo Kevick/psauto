@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-
-import { motion } from "framer-motion"; // Importando o framer-motion
-import Header from "../components/Header";
+import { motion } from "framer-motion";
+import Header from "../components/Header"; // Importando o Header
 import Hero from "../components/Hero";
 import ImageGallery from "../components/ImageGallery";
 import ServicesSection from "../components/ServicesSection";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
+import Blog from "../components/Blog"; // Importando o Blog
 
 const PsautoWebsite = () => {
   const [formData, setFormData] = useState({
@@ -28,29 +28,12 @@ const PsautoWebsite = () => {
   };
 
   const handleSubmit = (selectedContact) => {
-    const mensagem = `
-*Solicitação de Orçamento*
-
-Prezado(a),
-
-Meu nome é *${formData.nome}* e estou interessado em um orçamento para *${formData.servico}*. 
-
-Informações do Veículo:
-- Marca: ${formData.marca}
-- Modelo: ${formData.modelo}
-- Ano: ${formData.ano}
-
-*Observações:*
-${formData.observacoes || "Sem observações adicionais."}.
-
-Aguardo seu retorno.
-
-Atenciosamente,
-${formData.nome}`.replace(/\s+/g, "%20");
+    const mensagem = `*Solicitação de Orçamento*...`;
 
     const numeroWhatsApp = `55${selectedContact.phone.replace(/\D/g, "")}`;
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, "_blank");
   };
+
   return (
     <div
       id="inicio"
@@ -58,6 +41,7 @@ ${formData.nome}`.replace(/\s+/g, "%20");
       style={{ scrollBehavior: "smooth" }} // Scroll suave inline
     >
       <Header />
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -92,6 +76,15 @@ ${formData.nome}`.replace(/\s+/g, "%20");
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
         />
+      </motion.div>
+
+     
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Blog />
       </motion.div>
 
       <Footer />
