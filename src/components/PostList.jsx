@@ -88,7 +88,14 @@ export default function PostList() {
       <h2 className="text-xl font-bold mb-4">Posts</h2>
       {posts.length > 0 ? (
         posts.map((post) => (
-          <div key={post.id} className="mb-4 border-b pb-4">
+          <div key={post.id} className="mb-4 border-b pb-4 relative">
+            {/* Botão de exclusão reposicionado */}
+            <button
+              onClick={() => handleDelete(post.id, post.mediaurl)}
+              className="absolute top-2 right-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
+            >
+              Excluir
+            </button>
             <h3 className="text-lg font-bold">{post.title}</h3>
             <p>{post.content}</p>
             {post.mediaurl && (
@@ -138,20 +145,14 @@ export default function PostList() {
                         alt="Post Media"
                         className="w-full mt-2"
                         onError={(e) => {
-                          e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
-                        }}
+                              e.target.src = "https://via.placeholder.com/150"; // Fallback em caso de erro
+                            }}
                       />
                     )}
                   </div>
                 )}
               </div>
             )}
-            <button
-              onClick={() => handleDelete(post.id, post.mediaurl)}
-              className="mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
-            >
-              Excluir
-            </button>
           </div>
         ))
       ) : (
