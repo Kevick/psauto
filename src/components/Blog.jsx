@@ -65,9 +65,11 @@ const Blog = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    // Remova o autoplay para desabilitar a transição automática
+    // autoplay: true,
+    // autoplaySpeed: 3000,
   };
+  
 
   return (
     <section id="blog" className="py-16 bg-gray-900">
