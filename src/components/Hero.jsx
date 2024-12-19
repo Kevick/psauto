@@ -19,6 +19,7 @@ const Hero = () => {
   export default Hero;
   
 */
+import heroVideo from '../img/hero.mp4';
 
 const Hero = () => {
   return (
@@ -26,7 +27,7 @@ const Hero = () => {
       {/* Vídeo de fundo */}
       <video 
         className="absolute inset-0 w-full h-full object-cover" 
-        src="https://mylivewallpapers.com/wp-content/uploads/Cars/PREVIEW-BMW-M3-E46.mp4" 
+        src={heroVideo}
         autoPlay 
         loop 
         muted 
