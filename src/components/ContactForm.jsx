@@ -84,11 +84,13 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
                 required
                 className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
               >
-                <option value="" disabled>Selecione o Serviço Desejado</option>
-                <option value="remap/chip">REMAP/CHIP</option>
-                <option value="calibracao">Calibração de motores</option>
-                <option value="dinamometro">Dinamômetro</option>
-                <option value="manutencao">Manutenção Mecanica</option>
+                <option value="" disabled selected>Selecione o Serviço Desejado</option>
+                <option value="Remap/Chip">Remap/Chip</option>
+                <option value="Calibração de Motores">Calibração de Motores</option>
+                <option value="Dinamômetro">Dinamômetro</option>
+                <option value="Manutenção Mecânica">Manutenção Mecânica</option>
+                <option value="Manutenção Elétrica em Geral">Manutenção Elétrica em Geral</option>
+                <option value="Instalação e Diagnóstico de Injeções Programáveis">Instalação e Diagnóstico de Injeções Programáveis</option>
               </select>
           </div>
           <div className="mt-4">

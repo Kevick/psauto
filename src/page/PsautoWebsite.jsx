@@ -28,8 +28,26 @@ const PsautoWebsite = () => {
   };
 
   const handleSubmit = (selectedContact) => {
-    const mensagem = `*Solicitação de Orçamento*...`;
-
+    const mensagem = `
+    *Solicitação de Orçamento*
+    
+    Prezado(a),
+    
+    Meu nome é *${formData.nome}* e estou interessado em um orçamento para *${formData.servico}*. 
+    
+    Informações do Veículo:
+    - Marca: ${formData.marca}
+    - Modelo: ${formData.modelo}
+    - Ano: ${formData.ano}
+    
+    *Observações:*
+    ${formData.observacoes || "Sem observações adicionais."}.
+    
+    Aguardo seu retorno.
+    
+    Atenciosamente,
+    ${formData.nome}`.replace(/\s+/g, "%20");
+    
     const numeroWhatsApp = `55${selectedContact.phone.replace(/\D/g, "")}`;
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, "_blank");
   };
