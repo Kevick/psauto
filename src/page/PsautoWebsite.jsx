@@ -6,7 +6,6 @@ import ImageGallery from "../components/ImageGallery";
 import ServicesSection from "../components/ServicesSection";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
-// import Blog from "../components/Blog"; // Importando o Blog
 
 const PsautoWebsite = () => {
   const [formData, setFormData] = useState({

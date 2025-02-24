@@ -35,7 +35,6 @@ const Header = () => {
           <a href="#nosso-trabalho" onClick={smoothScroll} className="hover:text-red-500">Nossos Trabalhos</a>
           <a href="#servicos" onClick={smoothScroll} className="hover:text-red-500">Serviços</a>
           <a href="#contato" onClick={smoothScroll} className="hover:text-red-500">Contato</a>
-          <a href="#blog" onClick={smoothScroll} className="hover:text-red-500">Blog</a>
         </nav>
 
         {/* Botão do menu hambúrguer para mobile */}
@@ -54,7 +53,6 @@ const Header = () => {
               <a href="#nosso-trabalho" onClick={smoothScroll} className="block py-2 hover:text-red-500">Nossos Trabalhos</a>
               <a href="#servicos" onClick={smoothScroll} className="block py-2 hover:text-red-500">Serviços</a>
               <a href="#contato" onClick={smoothScroll} className="block py-2 hover:text-red-500">Contato</a>
-              <a href="#blog" onClick={smoothScroll} className="block py-2 hover:text-red-500">Blog</a>
             </nav>
           </div>
         )}
