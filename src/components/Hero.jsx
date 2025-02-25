@@ -28,7 +28,7 @@ const Hero = () => {
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-4xl px-4 mx-auto"
       >
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-red-500 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent leading-tight">
           Melhore A Performance <br className="hidden md:block" />
           do Seu Veículo
         </h1>
@@ -42,7 +42,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('contato')}
-            className="px-8 py-3 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 transition-colors"
+            className="px-8 py-3 bg-gradient-to-r from-red-600 to-rose-500 text-white rounded-full font-semibold hover:from-red-700 hover:to-rose-600 transition-colors"
           >
             Agende Agora
           </motion.button>

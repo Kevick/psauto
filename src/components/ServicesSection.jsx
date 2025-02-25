@@ -5,8 +5,8 @@ const ServicesSection = () => {
   return (
     <section id="servicos" className="py-24 bg-gradient-to-b from-gray-900 to-black">
       <div className="container mx-auto px-4">
-        <h3 className="text-4xl font-bold text-center mb-16">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
+        <h3 className="text-4xl md:text-5xl font-bold text-center mb-16">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-rose-500 to-red-700">
             Nossos Serviços
           </span>
         </h3>
@@ -24,13 +24,13 @@ const ServicesSection = () => {
             },
             {
               icon: CheckCircle,
-              title: "MECÂNICA",
+              title: "Mecânica Especializada",
               description: "Atendimento especializado e personalizado"
             }
           ].map((servico, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-8 rounded-xl shadow-lg backdrop-blur-sm border border-gray-700/30 text-center relative cursor-pointer"
+              className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-8 rounded-xl shadow-lg backdrop-blur-sm border border-gray-700/30 text-center relative cursor-pointer group"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 200, damping: 10 }}
             >
@@ -41,13 +41,15 @@ const ServicesSection = () => {
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
               >
                 <motion.div
-                  className="absolute w-16 h-16 bg-red-500/20 blur-xl rounded-full"
+                  className="absolute w-16 h-16 bg-gradient-to-r from-red-500/20 to-rose-500/20 blur-xl rounded-full"
                   animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
                 />
-                <servico.icon size={50} className="text-red-500 relative z-10" />
+                <servico.icon size={50} className="text-red-500 group-hover:text-rose-500 transition-colors relative z-10" />
               </motion.div>
-              <h4 className="text-2xl font-bold mb-4 text-white">{servico.title}</h4>
+              <h4 className="text-2xl font-bold mb-4 bg-gradient-to-r from-red-500 to-rose-500 bg-clip-text text-transparent">
+                {servico.title}
+              </h4>
               <p className="text-gray-300">{servico.description}</p>
             </motion.div>
           ))}

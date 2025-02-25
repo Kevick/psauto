@@ -4,6 +4,13 @@ import { Gauge, Menu, X } from 'lucide-react';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navLinks = [
+    { href: "#inicio", text: "Início", hoverColor: "hover:text-red-500" },
+    { href: "#nosso-trabalho", text: "Nossos Trabalhos", hoverColor: "hover:text-orange-600" },
+    { href: "#servicos", text: "Serviços", hoverColor: "hover:text-rose-500" },
+    { href: "#contato", text: "Contato", hoverColor: "hover:text-red-600" }
+  ];
+
   // Função para ativar rolagem suave ao clicar nos links
   const smoothScroll = (e) => {
     e.preventDefault(); // Previne o comportamento padrão do link
@@ -31,15 +38,21 @@ const Header = () => {
 
         {/* Menu de navegação para desktop */}
         <nav className="hidden md:flex space-x-4">
-          <a href="#inicio" onClick={smoothScroll} className="hover:text-red-500">Início</a>
-          <a href="#nosso-trabalho" onClick={smoothScroll} className="hover:text-red-500">Nossos Trabalhos</a>
-          <a href="#servicos" onClick={smoothScroll} className="hover:text-red-500">Serviços</a>
-          <a href="#contato" onClick={smoothScroll} className="hover:text-red-500">Contato</a>
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={smoothScroll}
+              className={`font-bold transition-colors duration-300 ${link.hoverColor}`}
+            >
+              {link.text}
+            </a>
+          ))}
         </nav>
 
         {/* Botão do menu hambúrguer para mobile */}
         <button 
-          className="md:hidden" 
+          className="md:hidden text-white hover:text-orange-600 transition-colors duration-300" 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -49,10 +62,16 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-black/90">
             <nav className="flex flex-col items-center py-4">
-              <a href="#inicio" onClick={smoothScroll} className="block py-2 hover:text-red-500">Início</a>
-              <a href="#nosso-trabalho" onClick={smoothScroll} className="block py-2 hover:text-red-500">Nossos Trabalhos</a>
-              <a href="#servicos" onClick={smoothScroll} className="block py-2 hover:text-red-500">Serviços</a>
-              <a href="#contato" onClick={smoothScroll} className="block py-2 hover:text-red-500">Contato</a>
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={smoothScroll}
+                  className={`block py-2 font-bold transition-colors duration-300 ${link.hoverColor}`}
+                >
+                  {link.text}
+                </a>
+              ))}
             </nav>
           </div>
         )}
