@@ -24,11 +24,15 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
   };
 
   return (
-    <section id="contato" className="py-16 bg-gray-800">
-      <div className="container mx-auto max-w-2xl">
-        <h3 className="text-3xl text-center mb-12 text-red-500">Solicite seu Orçamento</h3>
-        <form onSubmit={handleFormSubmit} className="bg-gray-900 p-8 rounded-lg shadow-lg">
-          {/* Inputs do formulário */}
+    <section id="contato" className="py-24 bg-gradient-to-b from-black to-gray-900">
+      <div className="container mx-auto max-w-2xl px-4">
+        <h3 className="text-4xl font-bold text-center mb-12">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
+            Solicite seu Orçamento
+          </span>
+        </h3>
+        <form onSubmit={handleFormSubmit} className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 p-8 rounded-xl shadow-lg backdrop-blur-sm border border-gray-700/30">
+          {/* Form inputs with improved styling */}
           <div className="grid md:grid-cols-2 gap-4">
             <input 
               type="text"
@@ -37,7 +41,7 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               value={formData.nome}
               onChange={handleInputChange}
               required
-              className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+              className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
             />
             <input 
               type="tel"
@@ -46,7 +50,7 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               value={formData.telefone}
               onChange={handleInputChange}
               required
-              className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+              className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
             />
           </div>
           <div className="mt-4 grid md:grid-cols-2 gap-4">
@@ -57,7 +61,7 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               value={formData.marca}
               onChange={handleInputChange}
               required
-              className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+              className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
             />
             <input 
               type="text"
@@ -66,7 +70,7 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               value={formData.modelo}
               onChange={handleInputChange}
               required
-              className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+              className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
             />
             <input 
               type="number"
@@ -75,14 +79,14 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               value={formData.ano}
               onChange={handleInputChange}
               required
-              className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+              className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
             />
             <select
                 name="servico"
                 value={formData.servico}
                 onChange={handleInputChange}
                 required
-                className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+                className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
               >
                 <option value="" disabled selected>Selecione o Serviço Desejado</option>
                 <option value="Remap/Chip">Remap/Chip</option>
@@ -100,29 +104,35 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               value={formData.observacoes}
               onChange={handleInputChange}
               rows="4"
-              className="w-full p-3 bg-gray-800 rounded border border-gray-700 focus:border-red-500"
+              className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
             />
           </div>
           <button 
             type="submit"
-            className="w-full mt-6 py-3 bg-red-500 text-black rounded hover:bg-red-600 flex justify-center items-center"
+            className="w-full mt-6 py-3 bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg hover:from-red-600 hover:to-red-800 transition-all duration-300 flex justify-center items-center shadow-lg"
           >
             <Send size={20} className="mr-3" />
             Enviar Solicitação
           </button>
         </form>
 
-        {/* Modal */}
+        {/* Modal with improved styling */}
         {showModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-gray-900 p-8 rounded-lg shadow-lg text-center max-w-sm w-full">
-              <h4 className="text-lg text-red-500 mb-4">Selecione um Contato</h4>
-              <ul className="mb-6">
+          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50">
+            <div className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 p-8 rounded-xl shadow-lg border border-gray-700/30 text-center max-w-sm w-full mx-4">
+              <h4 className="text-xl font-bold mb-6">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-700">
+                  Selecione um Contato
+                </span>
+              </h4>
+              <ul className="mb-6 space-y-2">
                 {contacts.map((contact) => (
                   <li
                     key={contact.phone}
-                    className={`p-3 rounded cursor-pointer hover:bg-gray-800 ${
-                      selectedContact?.phone === contact.phone ? 'bg-gray-800' : ''
+                    className={`p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                      selectedContact?.phone === contact.phone 
+                        ? 'bg-red-500/10 border border-red-500/30' 
+                        : 'hover:bg-gray-800/50'
                     }`}
                     onClick={() => setSelectedContact(contact)}
                   >
@@ -133,9 +143,11 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
               <button
                 onClick={handleSendToContact}
                 disabled={!selectedContact}
-                className={`w-full py-3 rounded ${
-                  selectedContact ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-700 cursor-not-allowed'
-                } text-black`}
+                className={`w-full py-3 rounded-lg transition-all duration-300 ${
+                  selectedContact 
+                    ? 'bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white' 
+                    : 'bg-gray-700/50 cursor-not-allowed text-gray-400'
+                }`}
               >
                 Confirmar Envio
               </button>
