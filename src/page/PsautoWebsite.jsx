@@ -6,6 +6,7 @@ import ImageGallery from "../components/ImageGallery";
 import ServicesSection from "../components/ServicesSection";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
+import InstagramPopup from "../components/InstagramPopup";
 
 const PsautoWebsite = () => {
   const [formData, setFormData] = useState({
@@ -58,6 +59,7 @@ const PsautoWebsite = () => {
       style={{ scrollBehavior: "smooth" }} // Scroll suave inline
     >
       <Header />
+      <InstagramPopup />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
