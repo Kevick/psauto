@@ -4,7 +4,6 @@ import { Send } from 'lucide-react';
 const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
-  const [selectedOption, setSelectedOption] = useState('');
 
   const contacts = [
     { name: 'Marinho', phone: '(24) 99965-5734' },
@@ -22,10 +21,6 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
       handleSubmit(selectedContact); // Passa o contato selecionado
       setShowModal(false);
     }
-  };
-
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
   };
 
   return (

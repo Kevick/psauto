@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import { X, Instagram, Award } from 'lucide-react';
+import { X, Award } from 'lucide-react';
 import Confetti from 'react-confetti';
 import CanvasConfetti from 'react-canvas-confetti';
 
