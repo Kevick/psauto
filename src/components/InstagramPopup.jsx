@@ -91,7 +91,7 @@ const InstagramPopup = () => {
                 <div className="flex items-center justify-center gap-2 mb-4">
                   <Award size={24} className="text-yellow-500" />
                   <h3 className="text-xl font-bold text-white">
-                    Somos a Melhor Oficina do Ano! 🏆
+                    Somos 1 entre os 3 Finalistas! 🏆
                   </h3>
                 </div>
 
@@ -102,7 +102,7 @@ const InstagramPopup = () => {
                     transition={{ delay: 0.5, duration: 0.5 }}
                     className="text-white text-lg"
                   >
-                    Obrigado a todos que votaram e nos ajudaram a conquistar este prêmio!
+                    Obrigado a todos que nos apoiaram e nos ajudaram a chegar até aqui!
                   </motion.div>
                 </div>
 
