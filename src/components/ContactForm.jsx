@@ -4,6 +4,7 @@ import { Send } from 'lucide-react';
 const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
 
   const contacts = [
     { name: 'Marinho', phone: '(24) 99965-5734' },
@@ -21,6 +22,10 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
       handleSubmit(selectedContact); // Passa o contato selecionado
       setShowModal(false);
     }
+  };
+
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
   return (
@@ -88,7 +93,7 @@ const ContactForm = ({ formData, handleInputChange, handleSubmit }) => {
                 required
                 className="w-full p-3 bg-gray-900/50 rounded-lg border border-gray-700 focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all"
               >
-                <option value="" disabled selected>Selecione o Serviço Desejado</option>
+                <option value="" disabled>Selecione o Serviço Desejado</option>
                 <option value="Remap/Chip">Remap/Chip</option>
                 <option value="Calibração de Motores">Calibração de Motores</option>
                 <option value="Dinamômetro">Dinamômetro</option>
